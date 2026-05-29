@@ -1,27 +1,3 @@
-class Carro:
-    def __init__(self, marca: str, modelo: str):
-        self.marca = marca
-        self.modelo = modelo
-
-    def exibir_info(self):
-        print(f"Carro: {self.marca} {self.modelo}")
-
-    def __str__(self):
-        return f"{self.marca} {self.modelo}"
-
-
-class CarroEletrico(Carro):
-    def __init__(self, marca: str, modelo: str, autonomia_bateria: int):
-        super().__init__(marca, modelo)
-        self.autonomia_bateria = autonomia_bateria
-
-    def exibir_info(self):
-        print(f"Carro Elétrico: {self.marca} {self.modelo} | Autonomia: {self.autonomia_bateria}km")
-
-    def __str__(self):
-        return f"{self.marca} {self.modelo} (Elétrico) - Bateria: {self.autonomia_bateria}km"
-
-
 class Livro:
     def __init__(self, titulo: str, autor: str):
         self.titulo = titulo
@@ -42,6 +18,7 @@ class Biblioteca:
         self.catalogo.append(livro)
 
     def listar_livros(self):
+        print(f"\n--- Catálogo da Biblioteca {self.nome} ---")
         for livro in self.catalogo:
             print(livro)
 
@@ -60,6 +37,22 @@ class Biblioteca:
         return False
 
 
+# --- Teste do Desafio Extra ---
 if __name__ == "__main__":
-    # Teste Carros
-    c = Carro("Toyota", "Corolla")
+    # Criando a biblioteca e os livros
+    minha_biblioteca = Biblioteca("Central")
+    livro1 = Livro("O Alquimista", "Paulo Coelho")
+    livro2 = Livro("1984", "George Orwell")
+    
+    minha_biblioteca.adicionar_livro(livro1)
+    minha_biblioteca.adicionar_livro(livro2)
+    
+    # Mostrando estado inicial
+    minha_biblioteca.listar_livros()
+    
+    # Simulando empréstimo
+    print("\n> Emprestando '1984'...")
+    minha_biblioteca.emprestar_livro("1984")
+    
+    # Mostrando estado atualizado
+    minha_biblioteca.listar_livros()
